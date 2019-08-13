@@ -258,11 +258,12 @@
 				background: #b5574c
 			}
 			.bg {
+				font-size:1rem;
 				background: url(bg.jpg) center center no-repeat;
 				background-size: cover;
 				width: 125%;
 				height: 125%;
-				filter: blur(1rem);
+				filter: blur(1em);
 				transform: translate(-50%, -50%);
 				position: absolute;
 				top: 50%;
@@ -270,24 +271,24 @@
 				z-index: 0;
 			}
 			.danger .bg{
-				animation: 2s shake ease infinite;
+				animation: 0.5s shake ease infinite;
 			}
 			@keyframes shake {
 				0%, 100% { 
 					margin:0;
-					filter: blur(1rem);
+					filter: blur(1em);
 				}
 				25% { 
-					margin: 5em 10em;
-					filter: blur(2rem);
+					margin: 5rem 10em;
+					filter: blur(2em);
 				}
 				50% {
 					margin:0 5em;
-					filter: blur(0rem);
+					filter: blur(0.5em);
 				}
 				75% {
 					margin:0 -10em;
-					filter: blur(2rem);
+					filter: blur(2em);
 				}
 			}
 			@media (orientation:landscape) {
