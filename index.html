@@ -389,7 +389,7 @@
 						mm = 108;
 						ss = 00;
 						a.focus();
-						if (document.querySelector(".danger").classList.remove("danger"));
+						if (document.querySelector(".danger")) document.querySelector(".danger").classList.remove("danger"));
 						document.querySelector(".bg").removeAttribute("style");
 					}
 					else {
