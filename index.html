@@ -349,47 +349,42 @@
 				const alarm = new Audio("alarm.mp3");
 				const beep = new Audio("beep.mp3");
 				const crash = new Audio("crash.mp3");
-				const tick = new Audio("tick.mp3");				
+				const tick = new Audio("tick.mp3");
+				
 				const ai = setInterval(() => {
-					let tick1 = tick.play();
-					if (tick1 !== null) { tick1.catch(() => tick.play()) }
+					let ticking = tick.play();
+					if (ticking) ticking.catch((e) => {
+						console.error(e);
+						tick.play();
+					});
 				}, 1e3);
 				const bi = setInterval(() => {
 					if (mm < 4) {
-						let beep1 = beep.play();
-						beep.muted = false;
-						if (beep1 !== null) { 
-							beep1.catch(() => {
-								beep.play();
-								beep.muted = false;
-							});
-						}
+						let beeping = beep.play();
+						if (beeping) beeping.catch((e) => {
+							console.error(e);
+							beep.play();
+						});
 					}
 				}, 2e3);
 				const ci = setInterval(() => {
 					if (mm < 1) {
 						clearInterval(bi);
-						let alarm1 = alarm.play();
-						alarm.muted = false;
-						if (alarm1 !== null) { 
-							alarm1.catch(() => {
-								alarm.play();
-								alarm.muted = false;
-							});
-						}
+						let alarming = alarm.play();
+						if (alarming) alarming.catch((e) => {
+							console.error(e);
+							alarm.play();
+						});
 					}
 				}, 2e3);
 				const di = setInterval(() => {
 					if (mm <= 0 && ss <= 10) {
 						clearInterval(ci);
-						let alarm1 = alarm.play();
-						alarm.muted = false;
-						if (alarm1 !== null) { 
-							alarm1.catch(() => {
-								alarm.play();
-								alarm.muted = false;
-							});
-						}
+						let alarming = alarm.play();
+						if (alarming) alarming.catch((e) => {
+							console.error(e);
+							alarm.play();
+						});
 					}
 				}, 1e3);
 				const ei = setInterval(() => {
@@ -397,14 +392,11 @@
 						clearInterval(ai);
 						clearInterval(di);
 						clearInterval(ei);
-						let crash1 = crash.play();
-						crash.muted = false;
-						if (crash1 !== null) { 
-							crash1.catch(() => {
-								crash.play();
-								crash.muted = false;
-							});
-						}
+						let crashing = crash.play();
+						if (crashing) crashing.catch((e) => {
+							console.error(e);
+							crash.play();
+						});
 					}
 				}, 100);
 			}
