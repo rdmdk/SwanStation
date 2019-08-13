@@ -462,15 +462,13 @@
 					a.focus();
 				}
 			};
-			document.getElementById("input").focus();
-			document.body.addEventListener("click", () => {
+			document.addEventListener("DOMContentLoaded", (e) => {
 				minutes();
 				seconds();
 				sounds();
 				const si = setInterval(() => update(), 1e3);
-				document.body.removeEventListener("click", () => {});
+				document.getElementById("input").focus();
 			});
-			document.addEventListener("DOMContentLoaded", (e) => sounds());
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
 		</script>
