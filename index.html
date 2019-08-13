@@ -404,6 +404,9 @@
 			function theend() {
 				document.querySelector("main").style.opacity = 0;
 				setTimeout(() => {
+					setInterval(() => document.getElementById("input").value += "System Failure ", 1e3);
+				}, 5e3);
+				setTimeout(() => {
 					localStorage.removeItem("minute");
 					localStorage.removeItem("second");
 					window.location.reload();
