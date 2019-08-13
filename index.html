@@ -465,7 +465,7 @@
 			document.getElementById("input").focus();
 			minutes();
 			seconds();
-			document.body.addEventListener("mouseenter", (e) => sounds()).removeEventListener("mouseenter");
+			sounds();
 			const si = setInterval(() => update(), 1e3);
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
