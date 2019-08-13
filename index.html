@@ -362,10 +362,12 @@
 				if (mm < 0 && ss <= 30) document.querySelector("main").classList.add("danger");
 				if (mm < 0 && ss <= 15) {
 					setInterval(() => {
-						var r1 = Math.random()*2|0 || -1;
-						var r2 = Math.random()*2|0 || -1;
+						var r1 = Math.floor(Math.random() - 0.5) * 2;
+						var r2 = Math.floor(Math.random() - 0.5) * 2;
+						var r3 = Math.floor(Math.random() * 3) + 1;
 						document.querySelector(".bg").style.marginTop = r1 + "em";
 						document.querySelector(".bg").style.marginLeft = r2 + "em";
+						document.querySelector(".bg").style.filter = "blur(" + r2 + ")";
 					}, 500);
 				}
 				if (mm < 0 && ss === 0) {
