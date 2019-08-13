@@ -416,8 +416,8 @@
 					ss = 59;
 					minutes();
 				}
-				if (mm <= 0 && ss <= 30) document.querySelector("main").classList.add("danger");
-				if (mm <= 0 && ss <= 15) {
+				if (mm <= 0 && ss <= 10) {
+					document.querySelector("main").classList.add("danger");
 					setInterval(() => {
 						if (document.querySelector(".danger")) {
 							var r1 = Math.floor(Math.random() - 0.5) * 2;
