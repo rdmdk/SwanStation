@@ -462,11 +462,12 @@
 					a.focus();
 				}
 			};
+			let si;
 			document.addEventListener("DOMContentLoaded", (e) => {
 				minutes();
 				seconds();
 				sounds();
-				const si = setInterval(() => update(), 1e3);
+				si = setInterval(() => update(), 1e3);
 				document.getElementById("input").focus();
 			});
 			document.getElementById("execute").addEventListener("click", () => execute());
