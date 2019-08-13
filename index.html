@@ -27,6 +27,7 @@
 				width: 100%;
 				height: 100%;
 				pointer-events: none;
+				transition: box-shadow 10s ease-in-out;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -36,9 +37,10 @@
 				box-shadow: inset 0 0 6rem black;
 			}
 			main:after {
-				box-shadow: inset 0 0 12rem teal;
+				box-shadow: inset 0 0 30rem teal;
 				mix-blend-mode: hard-light;
 			}
+			.danger:after{box-shadow: inset 0 0 30rem red}
 			.time {
 				font-size: 2rem;
 				background: url(metal.jpg) top center no-repeat #ccc;
@@ -354,7 +356,8 @@
 					minutes();
 				}
 				if (mm < 4) beep();
-				if (mm < 0) {
+				if (mm < 0 && ss <= 30) document.getElementById("main").classList.add("danger");
+				if (mm < 0 && ss === 0) {
 					mm = 108;
 					ss = 00;
 				}
@@ -369,6 +372,7 @@
 						mm = 108;
 						ss = 00;
 						a.focus();
+						if (document.querySelector(".danger").classList.remove("danger"));
 					}
 					else {
 						a.value = "Not yet";
