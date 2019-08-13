@@ -1,402 +1,388 @@
 <!DOCTYPE html>
 <html lang = "en">
-  <head>
-    <title>Swan Station
-    </title>
-    <meta charset = "UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#444">
-    <style>
-      *{
-        font-size:1em;
-        line-height:1em;
-        text-decoration:none;
-        margin:0;
-        padding:0;
-        box-sizing:border-box}
-      h1,h2,h3,h4,h5,h6{
-        font-weight:normal}
-      ol,ul,li{
-        list-style-type:none}
-      table{
-        border-collapse:collapse}
-      body {
-        font: 0 arial;
-        background: #000;
-        user-select: none;
-      }
-      main {
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        position: fixed;
-        top: 0;
-        left: 0;
-      }
-      main:before,
-      main:after {
-        content: "";
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 50;
-      }
-      main:before {
-        box-shadow: inset 0 0 6rem black;
-      }
-      main:after {
-        box-shadow: inset 0 0 12rem teal;
-        mix-blend-mode: hard-light;
-      }
-      .time {
-        font-size: 2rem;
-        background: url(metal.jpg) top center no-repeat #ccc;
-        background-size: cover;
-        padding: 1em 0.5em 1.5em;
-        box-shadow: 0 0 3em #000;
-        transform: translate(-50%, 0);
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        z-index: 10;
-      }
-      .countdown {
-        font-size: 2em;
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-column-gap: 0.25em;
-      }
-      .countdown .m,
-      .countdown .s {
-        box-shadow: inset 0 0 2em #000;
-        padding: 0.15em;
-        display: grid;
-        grid-column-gap: 0.05em;
-      }
-      .countdown .m {
-        grid-template-columns: 1fr 1fr 1fr
-      }
-      .countdown .s {
-        grid-template-columns: 1fr 1fr;
-      }
-      .countdown span {
-        font-weight: bold;
-        text-align: center;
-        width: 0.75em;
-        position: relative;
-      }
-      .countdown span:before {
-        content: "";
-        background: rgba(127, 127, 127, 0.25);
-        width: 100%;
-        height: 0.025em;
-        transform: translate(0, -50%);
-        position: absolute;
-        top: 50%;
-        left: 0;
-      }
-      .m span {
-        background: #333;
-        color: #eee;
-      }
-      .s span {
-        background: #eee;
-        color: #333;
-      }
-      .computer {
-        font-size: 2rem;
-        transform: translate(-50%, 0);
-        perspective: 1000px;
-        position: absolute;
-        bottom: 10%;
-        left: 50%;
-        z-index: 25;
-      }
-      .monitor,
-      .keyboard {
-        background: #928b7e;
-        padding: 1em 0.75em;
-        border-radius: 0.25em;
-        position: relative;
-        overflow: hidden;
-      }
-      .keyboard {
-        transform: rotateX(65deg) scale(1.09);
-        border-bottom: 3rem solid #797369;
-        margin-top: -5rem;
-      }
-      .monitor:before,
-      .keyboard:before {
-        content: "";
-        background: url(plastic) top center no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        mix-blend-mode: color-burn;
-        opacity: 0.1;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 5;
-      }
-      .bezel {
-        background: #444;
-        border: 0 solid #444;
-        border-width: 0.5em 4.5em 0.5em 0.5em;
-        border-radius: 0.25em;
-        position: relative;
-      }
-      .recession {
-        background: #333;
-        padding: 1em;
-        border-radius: 0.25em;
-        position: relative;
-      }
-      .recession:before {
-        content: "";
-        width: 12em;
-        height: 9.5em;
-        box-shadow: inset 0 0 8em #222;
-        border-radius: 0.25em;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-      .switch {
-        width: 3.5em;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content min-content;
-        grid-column-gap: 0.25em;
-        grid-row-gap: 0.25em;
-        position: absolute;
-        right: 1.5em;
-        bottom: 1.5em;
-      }
-      .dharma {
-        background: #aaa;
-        width: 100%;
-        height: 1.25em;
-        grid-area: 1 / 1 / 2 / 3;
-      }
-      .switch .left,
-      .switch .right {
-        background: #333;
-        height: 3em;
-      }
-      .screen {
-        background: #111;
-        width: 10em;
-        height: 7.5em;
-        padding: 1em;
-        border-radius: 0.5em;
-        box-shadow: inset 0 0 4rem #000;
-        overflow: hidden;
-        position: relative;
-        z-index: 10;
-      }
-      .line {
-        width: 100%;
-        display: grid;
-        grid-template-columns: min-content auto;
-        align-items: center;
-      }
-      .screen .span,
-      .screen .input {
-        font: 1rem/1em monospace;
-        text-shadow: 0 0 0.1em;
-        color: green;
-      }
-      .screen .input {
-        background: none;
-        border: none;
-        outline: none;
-      }
-      .keyboard {
-        box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
-      }
-      .keyboard span {
-        background: #333;
-        height: 1em;
-        display: block;
-        position: relative;
-      }
-      .keyboard .one {
-        margin: 0.1em 0 0.1em 0.5em;
-      }
-      .keyboard .three,
-      .keyboard .four {
-        margin: 0.1em 0.5em;
-      }
-      .keyboard .four {
-        text-align: right
-      }
-      .keyboard .five {
-        margin: 0.1em 4em;
-      }
-      .keyboard .i {
-        background: #fff;
-        width: 2rem;
-        height: 100%;
-        margin: 0.2rem 0 0;
-        display: inline-block;
-        position: absolute;
-        top: 100%;
-        left: 0;
-      }
-      .button {
-        font: 0 monospace;
-        background: salmon;
-        width: 3rem;
-        height: 100%;
-        border: 0 solid tan;
-        border-width: 0 0 0 0.2rem;
-        outline: none;
-        display: inline-block;
-        vertical-align: top;
-        cursor: pointer;
-      }
-      .button:hover {
-        background: #b5574c
-      }
-      .bg {
-        background: url(bg.jpg) center center no-repeat;
-        background-size: cover;
-        width: 125%;
-        height: 125%;
-        filter: blur(1rem);
-        transform: translate(-50%, -50%);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 0;
-      }
-      @media (orientation:landscape) {
-        html {
-          font-size: 1.5vh;
-        }
-      }
-      @media (orientation:portrait) {
-        html {
-          font-size: 1.5vw;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <section class="time">
-        <div class="countdown">
-          <div id="m" class="m">
-          </div>
-          <div id="s" class="s">
-          </div>
-        </div>
-      </section>
-      <section class="computer">
-        <div class="monitor">
-          <div class="bezel">
-            <div class="recession">
-              <div id="screen" class="screen">
-                <div class="line">
-                  <span class="span">:>&nbsp;
-                  </span>
-                  <input id="input" class="input" autocorrect="off" autocomplete="off" autocapitalize="none" spellcheck="false" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="switch">
-            <div class="dharma">
-            </div>
-            <div class="left">
-            </div>
-            <div class="right">
-            </div>
-          </div>
-        </div>
-        <div class="keyboard">
-          <span class="one">
-          </span>
-          <span class="two">
-          </span>
-          <span class="three">
-          </span>
-          <span class="four">
-            <i class="i">
-            </i>
-            <button id="execute" class="button">Execute
-            </button>
-          </span>
-          <span class="five">
-          </span>
-        </div>
-      </section>
-      <section class="bg">
-      </section>
-    </main>
-    <script>
-      let m = document.getElementById("m");
-      let s = document.getElementById("s");
-      let mm = localStorage.minute ? localStorage.minute : 108;
-      let ss = localStorage.second ? localStorage.second : 00;
-      function beep() {
-        const a = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");
-        a.play();
-      }
-      function update() {
-        let mmm = mm.toString().split("");
-        let sss = ss.toString().split("");
-        let mz = mm < 100 && mm > 10 ? "<span>0</span>" : mm < 10 ? "<span>0</span><span>0</span>" : "";
-        let sz = ss < 10 ? "<span>0</span>" : "";
-        m.innerHTML = mz;
-        s.innerHTML = sz;
-        mmm.forEach((a) => m.insertAdjacentHTML("beforeend", "<span>" + a + "</span>"));
-        sss.forEach((a) => s.insertAdjacentHTML("beforeend", "<span>" + a + "</span>"));
-        ss--;
-        if (ss < 0) {
-          mm--;
-          ss = 59;
-        }
-        if (mm < 4) beep();
-        if (mm <= 0 && ss <= 0) {
-          mm = 108;
-          ss = 00;
-        }
-        localStorage.minute = mm;
-        localStorage.second = ss;
-      };
-      function execute() {
-        let a = document.getElementById("input");
-        if (a.value === "4 8 15 16 23 42") {
-          if (mm < 4) {
-            mm = 108;
-            ss = 00;
-            a.focus();
-          }
-          else {
-            a.value = "Not yet";
-            setTimeout(() => {
-              a.value = "";
-              a.focus();
-            }, 4e3);
-          }
-        }
-        else {
-          a.value = "";
-          a.focus();
-        }
-      };
-      document.getElementById("input").focus();
-      update();
-      setInterval(() => update(), 1e3);
-      document.getElementById("execute").addEventListener("click", () => execute());
-      document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
-    </script>
-  </body>
+	<head>
+		<title>Swan Station</title>
+		<meta charset = "UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta name="theme-color" content="#444" />
+		
+		<style>
+			*{font-size:1em;line-height:1em;text-decoration:none;margin:0;padding:0;box-sizing:border-box}h1,h2,h3,h4,h5,h6{font-weight:normal}ol,ul,li{list-style-type:none}table{border-collapse:collapse}
+			body {
+				font: 0 arial;
+				background: #000;
+				user-select: none;
+			}
+			main {
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+			main:before,
+			main:after {
+				content: "";
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 50;
+			}
+			main:before {
+				box-shadow: inset 0 0 6rem black;
+			}
+			main:after {
+				box-shadow: inset 0 0 12rem teal;
+				mix-blend-mode: hard-light;
+			}
+			.time {
+				font-size: 2rem;
+				background: url(metal.jpg) top center no-repeat #ccc;
+				background-size: cover;
+				padding: 1em 0.5em 1.5em;
+				box-shadow: 0 0 3em #000;
+				transform: translate(-50%, 0);
+				position: absolute;
+				top: 10%;
+				left: 50%;
+				z-index: 10;
+			}
+			.countdown {
+				font-size: 2em;
+				display: grid;
+				grid-template-columns: auto auto;
+				grid-column-gap: 0.25em;
+			}
+			.countdown .m,
+			.countdown .s {
+				box-shadow: inset 0 0 2em #000;
+				padding: 0.15em;
+				display: grid;
+				grid-column-gap: 0.05em;
+			}
+			.countdown .m {
+				grid-template-columns: 1fr 1fr 1fr
+			}
+			.countdown .s {
+				grid-template-columns: 1fr 1fr;
+			}
+			.countdown span {
+				font-weight: bold;
+				text-align: center;
+				width: 0.75em;
+				position: relative;
+			}
+			.countdown span:before {
+				content: "";
+				background: rgba(127, 127, 127, 0.25);
+				width: 100%;
+				height: 0.025em;
+				transform: translate(0, -50%);
+				position: absolute;
+				top: 50%;
+				left: 0;
+			}
+			.m span {
+				background: #333;
+				color: #eee;
+			}
+			.s span {
+				background: #eee;
+				color: #333;
+			}
+			.computer {
+				font-size: 2rem;
+				transform: translate(-50%, 0);
+				perspective: 1000px;
+				position: absolute;
+				bottom: 10%;
+				left: 50%;
+				z-index: 25;
+			}
+			.monitor,
+			.keyboard {
+				background: #928b7e;
+				padding: 1em 0.75em;
+				border-radius: 0.25em;
+				position: relative;
+				overflow: hidden;
+			}
+			.keyboard {
+				transform: rotateX(65deg) scale(1.09);
+				border-bottom: 3rem solid #797369;
+				margin-top: -5rem;
+			}
+			.monitor:before,
+			.keyboard:before {
+				content: "";
+				background: url(plastic) top center no-repeat;
+				background-size: cover;
+				width: 100%;
+				height: 100%;
+				mix-blend-mode: color-burn;
+				opacity: 0.1;
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 5;
+			}
+			.bezel {
+				background: #444;
+				border: 0 solid #444;
+				border-width: 0.5em 4.5em 0.5em 0.5em;
+				border-radius: 0.25em;
+				position: relative;
+			}
+			.recession {
+				background: #333;
+				padding: 1em;
+				border-radius: 0.25em;
+				position: relative;
+			}
+			.recession:before {
+				content: "";
+				width: 12em;
+				height: 9.5em;
+				box-shadow: inset 0 0 8em #222;
+				border-radius: 0.25em;
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.switch {
+				width: 3.5em;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: min-content min-content;
+				grid-column-gap: 0.25em;
+				grid-row-gap: 0.25em;
+				position: absolute;
+				right: 1.5em;
+				bottom: 1.5em;
+			}
+			.dharma {
+				background: #aaa;
+				width: 100%;
+				height: 1.25em;
+				grid-area: 1 / 1 / 2 / 3;
+			}
+			.switch .left,
+			.switch .right {
+				background: #333;
+				height: 3em;
+			}
+			.screen {
+				background: #111;
+				width: 10em;
+				height: 7.5em;
+				padding: 1em;
+				border-radius: 0.5em;
+				box-shadow: inset 0 0 4rem #000;
+				overflow: hidden;
+				position: relative;
+				z-index: 10;
+			}
+			.line {
+				width: 100%;
+				display: grid;
+				grid-template-columns: min-content auto;
+				align-items: center;
+			}
+			.screen .span,
+			.screen .input {
+				font: 1rem/1em monospace;
+				text-shadow: 0 0 0.1em;
+				color: green;
+			}
+			.screen .input {
+				background: none;
+				border: none;
+				outline: none;
+			}
+			.keyboard {
+				box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
+			}
+			.keyboard span {
+				background: #333;
+				height: 1em;
+				display: block;
+				position: relative;
+			}
+			.keyboard .one {
+				margin: 0.1em 0 0.1em 0.5em;
+			}
+			.keyboard .three,
+			.keyboard .four {
+				margin: 0.1em 0.5em;
+			}
+			.keyboard .four {
+				text-align: right
+			}
+			.keyboard .five {
+				margin: 0.1em 4em;
+			}
+			.keyboard .i {
+				background: #fff;
+				width: 2rem;
+				height: 100%;
+				margin: 0.2rem 0 0;
+				display: inline-block;
+				position: absolute;
+				top: 100%;
+				left: 0;
+			}
+			.button {
+				font: 0 monospace;
+				background: salmon;
+				width: 3rem;
+				height: 100%;
+				border: 0 solid tan;
+				border-width: 0 0 0 0.2rem;
+				outline: none;
+				display: inline-block;
+				vertical-align: top;
+				cursor: pointer;
+			}
+			.button:hover {
+				background: #b5574c
+			}
+			.bg {
+				background: url(bg.jpg) center center no-repeat;
+				background-size: cover;
+				width: 125%;
+				height: 125%;
+				filter: blur(1rem);
+				transform: translate(-50%, -50%);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 0;
+			}
+			@media (orientation:landscape) {
+				html {
+					font-size: 1.5vh;
+				}
+			}
+			@media (orientation:portrait) {
+				html {
+					font-size: 1.5vw;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section class="time">
+				<div class="countdown">
+					<div id="m" class="m"></div>
+					<div id="s" class="s"></div>
+				</div>
+			</section>
+			<section class="computer">
+				<div class="monitor">
+					<div class="bezel">
+						<div class="recession">
+							<div id="screen" class="screen">
+								<div class="line">
+									<span class="span">:>&nbsp;</span>
+									<input id="input" class="input" autocorrect="off" autocomplete="off" autocapitalize="none" spellcheck="false" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="switch">
+						<div class="dharma"></div>
+						<div class="left"></div>
+						<div class="right"></div>
+					</div>
+				</div>
+				<div class="keyboard">
+					<span class="one"></span>
+					<span class="two"></span>
+					<span class="three"></span>
+					<span class="four">
+						<i class="i"></i>
+						<button id="execute" class="button">Execute</button>
+					</span>
+					<span class="five"></span>
+				</div>
+			</section>
+			<section class="bg"></section>
+		</main>
+		<script>
+			let m = document.getElementById("m");
+			let s = document.getElementById("s");
+			let mm = localStorage.minute ? localStorage.minute : 108;
+			let ss = localStorage.second ? localStorage.second : 00;
+			
+			function beep() {
+				const a = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");
+				a.play();
+			}
+			
+			function minutes() {
+				let a = mm.toString().split("");
+				let b = mm < 100 && mm >= 10 ? "<span>0</span>" : mm < 10 ? "<span>0</span><span>0</span>" : "";
+				m.innerHTML = b;
+				a.forEach((c) => m.insertAdjacentHTML("beforeend", "<span>" + c + "</span>"));
+			}
+			
+			function seconds() {
+				let a = ss.toString().split("");
+				let b = ss < 10 ? "<span>0</span>" : "";
+				s.innerHTML = b;
+				a.forEach((c) => s.insertAdjacentHTML("beforeend", "<span>" + c + "</span>"));
+			}
+			
+			function update() {
+				ss--;
+				seconds();
+				if (ss < 0) {
+					mm--;
+					minutes();
+					ss = 59;
+				}
+				if (mm < 4) beep();
+				if (mm <= 0 && ss <= 0) {
+					mm = 108;
+					ss = 00;
+				}
+				localStorage.minute = mm;
+				localStorage.second = ss;
+			};
+			function execute() {
+				let a = document.getElementById("input");
+				if (a.value === "4 8 15 16 23 42") {
+					if (mm < 4) {
+						mm = 108;
+						ss = 00;
+						a.focus();
+					}
+					else {
+						a.value = "Not yet";
+						setTimeout(() => {
+							a.value = "";
+							a.focus();	
+						}, 4e3);
+					}
+				}
+				else {
+					a.value = "";
+					a.focus();
+				}
+			};
+			document.getElementById("input").focus();
+			minutes();
+			seconds();
+			setInterval(() => update(), 1e3);
+			document.getElementById("execute").addEventListener("click", () => execute());
+			document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
+		</script>
+	</body>
 </html>
