@@ -263,34 +263,15 @@
 				background-size: cover;
 				width: 125%;
 				height: 125%;
+				margin:0;
 				filter: blur(1em);
 				transform: translate(-50%, -50%);
+				transition:filter 0.5s ease, margin 0.5s ease;
 				position: absolute;
 				top: 50%;
 				left: 50%;
 				z-index: 0;
-			}
-			.danger .bg{
-				animation: 0.5s shake ease infinite;
-			}
-			@keyframes shake {
-				0%, 100% { 
-					margin:0;
-					filter: blur(1em);
-				}
-				25% { 
-					margin: 2.5em 5em;
-					filter: blur(2em);
-				}
-				50% {
-					margin:2.5em;
-					filter: blur(0.5em);
-				}
-				75% {
-					margin:-2.5em -5em;
-					filter: blur(2em);
-				}
-			}
+			}		
 			@media (orientation:landscape) {
 				html {
 					font-size: 1.5vh;
@@ -378,7 +359,15 @@
 					minutes();
 				}
 				if (mm < 4) beep();
-				if (mm < 0 && ss <= 30) document.getElementById("main").classList.add("danger");
+				if (mm < 0 && ss <= 30) document.querySelector("main").classList.add("danger");
+				if (mm < 0 && ss <= 15) {
+					setInterval(() => {
+						var r1 = Math.random()*2|0 || -1;
+						var r2 = Math.random()*2|0 || -1;
+						document.querySelector(".bg").style.marginTop = r1 + "em";
+						document.querySelector(".bg").style.marginLeft = r2 + "em";
+					}, 500);
+				}
 				if (mm < 0 && ss === 0) {
 					mm = 108;
 					ss = 00;
