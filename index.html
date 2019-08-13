@@ -269,6 +269,27 @@
 				left: 50%;
 				z-index: 0;
 			}
+			.danger .bg{
+				animation: 2s shake ease infinite;
+			}
+			@keyframes shake {
+				0%, 100% { 
+					margin:0;
+					filter: blur(1rem);
+				}
+				25% { 
+					margin: 5em 10em;
+					filter: blur(2rem);
+				}
+				50% {
+					margin:0 5em;
+					filter: blur(0rem);
+				}
+				75% {
+					margin:0 -10em;
+					filter: blur(2rem);
+				}
+			}
 			@media (orientation:landscape) {
 				html {
 					font-size: 1.5vh;
