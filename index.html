@@ -355,6 +355,11 @@
 			
 			function theend() {
 				document.querySelector("main").style.opacity = 0;
+				setTimeout(() => {
+					localStorage.removeItem("minute");
+					localStorage.removeItem("second");
+					window.location.reload();
+				}, 30e3);
 			}
 			function update() {
 				ss--;
@@ -381,6 +386,7 @@
 					clearInterval(si);
 					theend();
 				}
+				if (mm === -1) theend();
 				seconds();
 				localStorage.minute = mm;
 				localStorage.second = ss;
