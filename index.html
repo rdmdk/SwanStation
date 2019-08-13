@@ -334,7 +334,7 @@
 			
 			function minutes() {
 				let a = mm.toString().split("");
-				let b = mm < 100 && mm >= 10 ? "<span>0</span>" : mm < 10 && m >= 0 ? "<span>0</span><span>0</span>" : "";
+				let b = mm < 100 && mm >= 10 ? "<span>0</span>" : mm < 10 && mm >= 0 ? "<span>0</span><span>0</span>" : "";
 				m.innerHTML = b;
 				a.forEach((c) => m.insertAdjacentHTML("beforeend", "<span>" + c + "</span>"));
 			}
@@ -361,8 +361,6 @@
 				seconds();
 				localStorage.minute = mm;
 				localStorage.second = ss;
-				console.log(mm);
-				console.log(ss);
 			};
 			function execute() {
 				let a = document.getElementById("input");
