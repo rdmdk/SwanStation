@@ -377,6 +377,7 @@
 				}, 1e3);
 				const ei = setInterval(() => {
 					if (mm <= 0 && ss <= 0) {
+						clearInterval(ai);
 						clearInterval(di);
 						clearInterval(ei);
 						let crash1 = crash.play();
