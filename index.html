@@ -346,10 +346,10 @@
 			}
 			
 			function sounds() {
-				const alarm = new Sound("alarm.mp3");
-				const beep = new Sound("beep.mp3");
-				const crash = new Sound("crash.mp3");
-				const tick = new Sound("tick.mp3");				
+				const alarm = new Audio("alarm.mp3");
+				const beep = new Audio("beep.mp3");
+				const crash = new Audio("crash.mp3");
+				const tick = new Audio("tick.mp3");				
 				const ai = setInterval(() => {
 					let tick1 = tick.play();
 					if (tick1 !== null) { tick1.catch(() => tick.play()) }
