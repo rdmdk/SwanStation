@@ -343,10 +343,10 @@
 			function update() {
 				ss--;
 				seconds();
-				if (ss === -1) {
+				if (ss <= 0) {
 					mm--;
 					minutes();
-					ss = 00;
+					ss = 59;
 				}
 				if (mm < 4) beep();
 				if (mm <= 0 && ss <= 0) {
