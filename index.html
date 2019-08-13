@@ -463,10 +463,13 @@
 				}
 			};
 			document.getElementById("input").focus();
-			minutes();
-			seconds();
-			sounds();
-			const si = setInterval(() => update(), 1e3);
+			document.body.addEventListener("click", () => {
+				minutes();
+				seconds();
+				sounds();
+				const si = setInterval(() => update(), 1e3);
+				document.body.removeEventListener("click", ());
+			});
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
 		</script>
