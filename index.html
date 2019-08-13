@@ -16,7 +16,9 @@
 			main {
 				width: 100vw;
 				height: 100vh;
+				opacity:1;
 				overflow: hidden;
+				transition: opacity 10s ease-in-out;
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -258,7 +260,7 @@
 				background: #b5574c
 			}
 			.bg {
-				font-size:1rem;
+				font-size: 1rem;
 				background: url(bg.jpg) center center no-repeat;
 				background-size: cover;
 				width: 125%;
@@ -266,7 +268,7 @@
 				margin:0;
 				filter: blur(1em);
 				transform: translate(-50%, -50%);
-				transition:filter 0.5s ease, margin 0.5s ease;
+				transition: filter 0.5s ease, margin 0.5s ease;
 				position: absolute;
 				top: 50%;
 				left: 50%;
@@ -351,6 +353,9 @@
 				a.forEach((c) => s.insertAdjacentHTML("beforeend", "<span>" + c + "</span>"));
 			}
 			
+			function theend() {
+				document.querySelector("main").style.opacity = 0;
+			}
 			function update() {
 				ss--;
 				if (ss < 0) {
@@ -373,10 +378,8 @@
 					}, 150);
 				}
 				if (mm === 0 && ss === 0) {
-					mm = 108;
-					ss = 00;
-					if (document.querySelector(".danger").classList.remove("danger"));
-					document.querySelector(".bg").removeAttribute("style");
+					clearInterval(si);
+					theend();
 				}
 				seconds();
 				localStorage.minute = mm;
@@ -409,7 +412,7 @@
 			document.getElementById("input").focus();
 			minutes();
 			seconds();
-			setInterval(() => update(), 1e3);
+			const si = setInterval(() => update(), 1e3);
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
 		</script>
