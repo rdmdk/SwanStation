@@ -331,7 +331,7 @@
 			
 			function minutes() {
 				let a = mm.toString().split("");
-				let b = mm < 100 && mm >= 10 ? "<span>0</span>" : mm < 10 ? "<span>0</span><span>0</span>" : "";
+				let b = mm < 100 && mm >= 10 ? "<span>0</span>" : mm < 10 && m >= 0 ? "<span>0</span><span>0</span>" : "";
 				m.innerHTML = b;
 				a.forEach((c) => m.insertAdjacentHTML("beforeend", "<span>" + c + "</span>"));
 			}
@@ -351,7 +351,7 @@
 					minutes();
 				}
 				if (mm < 4) beep();
-				if (mm <= 0 && ss < 0) {
+				if (mm < 0 && ss < 0) {
 					mm = 108;
 					ss = 00;
 				}
