@@ -192,7 +192,6 @@
 				width: 100%;
 				display: grid;
 				grid-template-columns: min-content auto;
-				align-items: center;
 			}
 			.screen .span,
 			.screen .input {
@@ -202,8 +201,12 @@
 			}
 			.screen .input {
 				background: none;
+				height: 11em;
 				border: none;
 				outline: none;
+				resize: none;
+				overflow:hidden;
+				
 			}
 			.keyboard {
 				box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
