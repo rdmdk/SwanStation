@@ -364,8 +364,8 @@
 					minutes();
 				}
 				if (mm < 4) beep();
-				if (mm === 0 && ss <= 30) document.querySelector("main").classList.add("danger");
-				if (mm === 0 && ss <= 15) {
+				if (mm <= 0 && ss <= 30) document.querySelector("main").classList.add("danger");
+				if (mm <= 0 && ss <= 15) {
 					setInterval(() => {
 						if (document.querySelector(".danger")) {
 							var r1 = Math.floor(Math.random() - 0.5) * 2;
