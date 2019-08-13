@@ -357,21 +357,39 @@
 				const bi = setInterval(() => {
 					if (mm < 4) {
 						let beep1 = beep.play();
-						if (beep1 !== null) { beep1.catch(() => beep.play()) }
+						beep.muted = false;
+						if (beep1 !== null) { 
+							beep1.catch(() => {
+								beep.play();
+								beep.muted = false;
+							});
+						}
 					}
 				}, 2e3);
 				const ci = setInterval(() => {
 					if (mm < 1) {
 						clearInterval(bi);
 						let alarm1 = alarm.play();
-						if (alarm1 !== null) { alarm1.catch(() => alarm.play()) }
+						alarm.muted = false;
+						if (alarm1 !== null) { 
+							alarm1.catch(() => {
+								alarm.play();
+								alarm.muted = false;
+							});
+						}
 					}
 				}, 2e3);
 				const di = setInterval(() => {
 					if (mm <= 0 && ss <= 10) {
 						clearInterval(ci);
 						let alarm1 = alarm.play();
-						if (alarm1 !== null) { alarm1.catch(() => alarm.play()) }
+						alarm.muted = false;
+						if (alarm1 !== null) { 
+							alarm1.catch(() => {
+								alarm.play();
+								alarm.muted = false;
+							});
+						}
 					}
 				}, 1e3);
 				const ei = setInterval(() => {
@@ -380,7 +398,13 @@
 						clearInterval(di);
 						clearInterval(ei);
 						let crash1 = crash.play();
-						if (crash1 !== null) { crash1.catch(() => crash.play()) }
+						crash.muted = false;
+						if (crash1 !== null) { 
+							crash1.catch(() => {
+								crash.play();
+								crash.muted = false;
+							});
+						}
 					}
 				}, 100);
 			}
