@@ -342,7 +342,6 @@
 			
 			function update() {
 				ss--;
-				seconds();
 				if (ss <= 0) {
 					mm--;
 					minutes();
@@ -353,6 +352,7 @@
 					mm = 108;
 					ss = 00;
 				}
+				seconds();
 				localStorage.minute = mm;
 				localStorage.second = ss;
 			};
