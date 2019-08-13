@@ -376,7 +376,7 @@
 							alarm.play();
 						});
 					}
-				}, 2e3);
+				}, 3e3);
 				const di = setInterval(() => {
 					if (mm <= 0 && ss <= 10) {
 						clearInterval(ci);
@@ -405,7 +405,7 @@
 				document.querySelector("main").style.opacity = 0;
 				setTimeout(() => {
 					setInterval(() => document.getElementById("input").value += "System Failure ", 1e3);
-				}, 5e3);
+				}, 10e3);
 				setTimeout(() => {
 					localStorage.removeItem("minute");
 					localStorage.removeItem("second");
