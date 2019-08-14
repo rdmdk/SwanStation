@@ -417,7 +417,7 @@
 			function theend() {
 				document.querySelector("main").style.opacity = 0;
 				setTimeout(() => {
-					setInterval(() => document.getElementById("input").value += "System Failure ", 1e3);
+					setInterval(() => document.getElementById("input").value += "System Failure ", 2e3);
 				}, 12e3);
 				setTimeout(() => {
 					localStorage.removeItem("minute");
