@@ -57,32 +57,32 @@ function sounds() {
 			clearInterval(ai);
 			clearInterval(di);
 			clearInterval(ei);
-			if (document.hidden || silenced) {}
-			else crash.play();
+			setTimeout(() => {
+				if (document.hidden || silenced) {}
+				else crash.play();
+			}, 2e3);
 		}
 	}, 100);
 }
 
 function theend() {
 	document.querySelector("main").classList.add("danger");
-	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 1e3);
-	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 2e3);
-	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 3e3);
-	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 4e3);
-	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 5e3);
+	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 2e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 3e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 4e3);
+	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 5e3);
+	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 6e3);
 	
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 500);
-	}, 11e3);
+	}, 11500);
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
 			var r1 = Math.floor(Math.random() - 0.5) * 2;
 			var r2 = Math.floor(Math.random() - 0.5) * 2;
-			var r3 = Math.floor(Math.random() * 3) + 2;
 			document.querySelector(".bg").style.marginTop = r1 + "em";
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
-			document.querySelector(".bg").style.filter = "blur(" + r3 + "em)";
 		}, 150);
 	}, 14e3);
 	setTimeout(() => {
