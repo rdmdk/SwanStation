@@ -64,11 +64,11 @@ function sounds() {
 
 function theend() {
 	document.querySelector("main").classList.add("danger");
-	setTimeout(() => { m.innerHTML = "<span class'black'>𓋿</span>" }, 1e3);
-	setTimeout(() => { m.innerHTML += "<span class'black'>𓏲</span>" }, 2e3);
-	setTimeout(() => { m.innerHTML += "<span class'black'>𓍑</span>" }, 3e3);
-	setTimeout(() => { s.innerHTML = "<span class'black'>𓅂</span>" }, 4e3);
-	setTimeout(() => { s.innerHTML += "<span class'black'>𓏱</span>" }, 5e3);
+	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 1e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 2e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 3e3);
+	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 4e3);
+	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 5e3);
 	
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 1e3);
