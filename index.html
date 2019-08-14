@@ -18,6 +18,7 @@
 				height: 100vh;
 				opacity:1;
 				overflow: hidden;
+				display:none;
 				transition: opacity 30s ease-in-out;
 				position: fixed;
 				top: 0;
@@ -466,12 +467,14 @@
 				}
 			};
 			let si;
-			document.addEventListener("DOMContentLoaded", (e) => {
-				minutes();
-				seconds();
+			document.body.addEventListener("click", (e) => {
 				sounds();
-				si = setInterval(() => update(), 1e3);
-				document.getElementById("input").focus();
+				setTimeout(() => {
+					minutes();
+					seconds();
+					si = setInterval(() => update(), 1e3);
+					document.getElementById("input").focus();
+				}, 3e3);
 			});
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.getElementById("screen").addEventListener("click", () => document.getElementById("input").focus());
