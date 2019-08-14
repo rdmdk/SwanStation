@@ -87,6 +87,18 @@ main:after {
 	width: 0.75em;
 	position: relative;
 }
+.countdown .black,
+.countdown .red{
+	font-weight: normal;
+}
+.countdown .black{
+	background: black;
+	color: red;
+}
+.countdown .red{
+	background: red;
+	color: black;
+}
 .countdown span:before {
 	content: "";
 	background: rgba(127, 127, 127, 0.25);
