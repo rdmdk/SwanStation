@@ -24,9 +24,8 @@ function sounds() {
 	const crash = new Audio("crash.mp3");
 	const tick = new Audio("tick.mp3");
 	const ai = setInterval(() => {
-		if (document.hidden || silenced) tick.muted();
-		else tick.volume = 0.25;
-		tick.play();
+		tick.volume = 0.25;
+		if (!document.hidden || !silenced) tick.play();
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
