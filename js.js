@@ -30,7 +30,7 @@ function sounds() {
 		setTimeout(() => {
 			tick.pause();
 			tick.currentTime = 0;
-		}, 1e3);
+		}, 900);
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
@@ -40,7 +40,7 @@ function sounds() {
 			setTimeout(() => {
 				beep.pause();
 				beep.currentTime = 0;
-			}, 2e3);
+			}, 1900);
 		}
 	}, 2e3);
 	const ci = setInterval(() => {
@@ -52,7 +52,7 @@ function sounds() {
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
-			}, 2e3);
+			}, 1900);
 		}
 	}, 2e3);
 	const di = setInterval(() => {
@@ -64,7 +64,7 @@ function sounds() {
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
-			}, 1e3);
+			}, 900);
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
