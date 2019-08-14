@@ -72,7 +72,7 @@ function theend() {
 	
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 2e3);
-	}, 12e3);
+	}, 11e3);
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
