@@ -64,8 +64,11 @@ function sounds() {
 
 function theend() {
 	document.querySelector("main").classList.add("danger");
-	document.querySelector("main").style.opacity = 0;
 	setTimeout(() => {
+		setInterval(() => document.getElementById("input").value += "System Failure ", 2e3);
+	}, 12e3);
+	setTimeout(() => {
+		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
 			var r1 = Math.floor(Math.random() - 0.5) * 2;
 			var r2 = Math.floor(Math.random() - 0.5) * 2;
@@ -74,10 +77,7 @@ function theend() {
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
 			document.querySelector(".bg").style.filter = "blur(" + r3 + "em)";
 		}, 150);
-	}, 5e3);
-	setTimeout(() => {
-		setInterval(() => document.getElementById("input").value += "System Failure ", 2e3);
-	}, 12e3);
+	}, 15e3);
 	setTimeout(() => {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
