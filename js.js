@@ -49,7 +49,10 @@ function sounds() {
 			alarm.volume = 0.75;
 			if (document.hidden || silenced) {}
 			else alarm.play();
-			setTimeout(() => alarm.stop(), 900);
+			setTimeout(() => {
+				alarm.pause();
+				alarm.currentTime = 0;
+			}, 900);
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
@@ -67,20 +70,20 @@ function sounds() {
 
 function theend() {
 	document.querySelector("main").classList.add("danger");
-	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 2e3);
-	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 3e3);
-	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 4e3);
-	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 5e3);
-	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 6e3);
+	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 3e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 4e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 5e3);
+	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 6e3);
+	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 7e3);
 	
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 500);
-	}, 13500);
+	}, 14e3);
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
-			var r1 = Math.floor(Math.random() - 0.5) * 2;
-			var r2 = Math.floor(Math.random() - 0.5) * 2;
+			var r1 = Math.floor(Math.random() - 0.5) * 3;
+			var r2 = Math.floor(Math.random() - 0.5) * 3;
 			document.querySelector(".bg").style.marginTop = r1 + "em";
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
 		}, 150);
