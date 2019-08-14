@@ -83,7 +83,7 @@ function theend() {
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
 			document.querySelector(".bg").style.filter = "blur(" + r3 + "em)";
 		}, 150);
-	}, 15e3);
+	}, 14e3);
 	setTimeout(() => {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
