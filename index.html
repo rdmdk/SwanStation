@@ -13,12 +13,22 @@
 				background: #000;
 				user-select: none;
 			}
+			.go{
+				background:#000;
+				width:100vw;
+				height:100vh;
+				border:none;
+				outline:none;
+				position:fixed;
+				top:0;
+				left:0;
+				z-index:1000;
+			}
 			main {
 				width: 100vw;
 				height: 100vh;
 				opacity:1;
 				overflow: hidden;
-				display:none;
 				transition: opacity 30s ease-in-out;
 				position: fixed;
 				top: 0;
@@ -326,6 +336,7 @@
 			</section>
 			<section class="bg"></section>
 		</main>
+		<button class="go" id="go">Execute</button>
 		<script>
 			let m = document.getElementById("m");
 			let s = document.getElementById("s");
@@ -467,13 +478,14 @@
 				}
 			};
 			let si;
-			document.body.addEventListener("click", (e) => {
+			document.getElementById("go").addEventListener("click", (e) => {
 				sounds();
 				setTimeout(() => {
 					minutes();
 					seconds();
 					si = setInterval(() => update(), 1e3);
 					document.getElementById("input").focus();
+					document.body.removeChild(document.getElementById("go"));
 				}, 3e3);
 			});
 			document.getElementById("execute").addEventListener("click", () => execute());
