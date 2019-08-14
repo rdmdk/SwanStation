@@ -149,8 +149,8 @@ document.querySelector(".monitor").addEventListener("click", () => document.getE
 document.getElementById("silence").addEventListener("click", () => silence());
 document.querySelector("i").addEventListener("click", () => {
 	localStorage.clear();
-	mm = 4;
-	ss = 10;
+	mm = 1;
+	ss = 30;
 	setTimeout(() => window.location.reload(), 1e3);
 });
 setInterval(() => {
