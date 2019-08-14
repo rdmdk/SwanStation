@@ -34,7 +34,7 @@ function sounds() {
 			if (document.hidden || silenced) {}
 			else beep.play();
 		}
-	}, 3e3);
+	}, 2e3);
 	const ci = setInterval(() => {
 		if (mm < 1) {
 			clearInterval(bi);
@@ -42,7 +42,7 @@ function sounds() {
 			if (document.hidden || silenced) {}
 			else alarm.play();
 		}
-	}, 4e3);
+	}, 2e3);
 	const di = setInterval(() => {
 		if (mm <= 0 && ss <= 10) {
 			clearInterval(ci);
