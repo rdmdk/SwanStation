@@ -75,7 +75,7 @@ function theend() {
 	
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 500);
-	}, 11500);
+	}, 13500);
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
