@@ -64,21 +64,21 @@ function sounds() {
 
 function theend() {
 	document.querySelector("main").classList.add("danger");
-	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 1e3);
-	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 2e3);
-	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 3e3);
-	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 4e3);
-	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 5e3);
+	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" });
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓏲</span>" }, 1e3);
+	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 2e3);
+	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 3e3);
+	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 4e3);
 	
 	setTimeout(() => {
-		setInterval(() => document.getElementById("input").value += "System Failure ", 1e3);
+		setInterval(() => document.getElementById("input").value += "System Failure ", 500);
 	}, 11e3);
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
 			var r1 = Math.floor(Math.random() - 0.5) * 2;
 			var r2 = Math.floor(Math.random() - 0.5) * 2;
-			var r3 = Math.floor(Math.random() * 3) + 1;
+			var r3 = Math.floor(Math.random() * 4) + 2;
 			document.querySelector(".bg").style.marginTop = r1 + "em";
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
 			document.querySelector(".bg").style.filter = "blur(" + r3 + "em)";
