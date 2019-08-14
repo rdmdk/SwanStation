@@ -392,12 +392,13 @@
 				
 				const ai = setInterval(() => {
 					if (document.hidden || silenced) tick.muted();
-					else tick.volume = 0.5;
+					else tick.volume = 0.25;
 					tick.play();
 				}, 1e3);
 				const bi = setInterval(() => {
 					if (mm < 4) {
 						if (document.hidden || silenced) beep.muted();
+						else beep.volume = 0.5;
 						beep.play();
 					}
 				}, 2500);
@@ -405,6 +406,7 @@
 					if (mm < 1) {
 						clearInterval(bi);
 						if (document.hidden || silenced) alarm.muted();
+						else alarm.volume = 0.5;
 						alarm.play();
 					}
 				}, 4e3);
@@ -412,6 +414,7 @@
 					if (mm <= 0 && ss <= 10) {
 						clearInterval(ci);
 						if (document.hidden || silenced) alarm.muted();
+						else alarm.volume = 0.5;
 						alarm.play();
 					}
 				}, 1e3);
