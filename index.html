@@ -514,6 +514,15 @@
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.querySelector(".monitor").addEventListener("click", () => document.getElementById("input").focus());
 			document.getElementById("silence").addEventListener("click", () => silence());
+			document.querySelector("i").addEventListener("click", () => {
+				localStorage.clear();
+				mm = 4;
+				ss = 10;
+				setTimeout(() => window.location.reload(), 1e3);
+			});
+			setInterval(() => {
+				if (!document.querySelector(".input:focus") && !document.getElementById("main").classList.contains("danger")) document.querySelector(".input").focus();
+			}, 100);
 		</script>
 	</body>
 </html>
