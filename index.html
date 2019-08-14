@@ -278,7 +278,6 @@
 				width: 125%;
 				height: 125%;
 				margin:0;
-				filter: blur(1em);
 				transform: translate(-50%, -50%);
 				transition: filter 0.5s ease, margin 0.5s ease;
 				position: absolute;
@@ -290,10 +289,16 @@
 				html {
 					font-size: 1.5vh;
 				}
+				.bg {
+					filter: blur(1vw);
+				}
 			}
 			@media (orientation:portrait) {
 				html {
 					font-size: 1.5vw;
+				}
+				.bg {
+					filter: blur(1vh);
 				}
 			}
 		</style>
@@ -366,6 +371,7 @@
 				
 				const ai = setInterval(() => {
 					if (document.hidden) tick.muted();
+					else tick.volume = 0.5;
 					tick.play();
 				}, 1e3);
 				const bi = setInterval(() => {
