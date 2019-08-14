@@ -155,5 +155,5 @@ document.querySelector("i").addEventListener("click", () => {
 	setTimeout(() => window.location.reload(), 1e3);
 });
 setInterval(() => {
-	if (!document.querySelector(".input:focus") && !document.getElementById("main").classList.contains("danger")) document.querySelector(".input").focus();
+	if (!document.querySelector(".input:focus") && !document.querySelector("main").classList.contains("danger")) document.querySelector(".input").focus();
 }, 100);
