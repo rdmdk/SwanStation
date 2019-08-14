@@ -45,10 +45,10 @@ main:before {
 }
 main:after {
 	box-shadow: inset 0 0 20rem teal;
-	mix-blend-mode: color;
+	mix-blend-mode: overlay;
 }
 .danger:after {
-	box-shadow: inset 0 0 80rem red
+	box-shadow: inset 0 0 60rem red
 }
 .time {
 	font-size: 2rem;
