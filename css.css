@@ -106,10 +106,6 @@ main:after {
 	background: #eee;
 	color: #333;
 }
-.m .black,
-.s .red {
-	font-size:1em;
-}
 .m .black{
 	background: black;
 	color: red;
