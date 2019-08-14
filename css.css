@@ -105,10 +105,6 @@ main:after {
 	background: #eee;
 	color: #333;
 }
-.m .black,
-.s .red{
-	font-weight: normal;
-}
 .m .black{
 	background: black;
 	color: red;
