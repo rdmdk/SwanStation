@@ -30,25 +30,22 @@ function sounds() {
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
-			if (document.hidden || silenced) beep.muted();
-			else beep.volume = 0.5;
-			beep.play();
+			beep.volume = 0.5;
+			if (!document.hidden || !silenced) beep.play();
 		}
-	}, 2500);
+	}, 3e3);
 	const ci = setInterval(() => {
 		if (mm < 1) {
 			clearInterval(bi);
-			if (document.hidden || silenced) alarm.muted();
-			else alarm.volume = 0.5;
-			alarm.play();
+			alarm.volume = 0.5;
+			if (!document.hidden || !silenced) alarm.play();
 		}
 	}, 4e3);
 	const di = setInterval(() => {
 		if (mm <= 0 && ss <= 10) {
 			clearInterval(ci);
-			if (document.hidden || silenced) alarm.muted();
-			else alarm.volume = 0.5;
-			alarm.play();
+			alarm.volume = 0.75;
+			if (!document.hidden || !silenced) alarm.play();
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
@@ -56,7 +53,7 @@ function sounds() {
 			clearInterval(ai);
 			clearInterval(di);
 			clearInterval(ei);
-			crash.play();
+			if (!document.hidden || !silenced) crash.play();
 		}
 	}, 100);
 }
