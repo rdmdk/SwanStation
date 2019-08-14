@@ -113,7 +113,7 @@ function execute() {
 	if (a.value === "4 8 15 16 23 42") {
 		if (mm < 4) {
 			mm = 108;
-			ss = 01;
+			ss = 02;
 			a.value = "";
 			a.focus();
 			if (document.querySelector(".danger")) document.querySelector(".danger").classList.remove("danger");
