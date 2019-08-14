@@ -365,39 +365,27 @@
 				const tick = new Audio("tick.mp3");
 				
 				const ai = setInterval(() => {
-					let ticking = tick.play();
-					if (ticking) ticking.catch((e) => {
-						console.error(e);
-						tick.play();
-					});
+					if (document.hidden) tick.muted();
+					tick.play();
 				}, 1e3);
 				const bi = setInterval(() => {
 					if (mm < 4) {
-						let beeping = beep.play();
-						if (beeping) beeping.catch((e) => {
-							console.error(e);
-							beep.play();
-						});
+						if (document.hidden) beep.muted();
+						beep.play();
 					}
 				}, 2500);
 				const ci = setInterval(() => {
 					if (mm < 1) {
 						clearInterval(bi);
-						let alarming = alarm.play();
-						if (alarming) alarming.catch((e) => {
-							console.error(e);
-							alarm.play();
-						});
+						if (document.hidden) alarm.muted();
+						alarm.play();
 					}
 				}, 4e3);
 				const di = setInterval(() => {
 					if (mm <= 0 && ss <= 10) {
 						clearInterval(ci);
-						let alarming = alarm.play();
-						if (alarming) alarming.catch((e) => {
-							console.error(e);
-							alarm.play();
-						});
+						if (document.hidden) alarm.muted();
+						alarm.play();
 					}
 				}, 1e3);
 				const ei = setInterval(() => {
@@ -405,11 +393,7 @@
 						clearInterval(ai);
 						clearInterval(di);
 						clearInterval(ei);
-						let crashing = crash.play();
-						if (crashing) crashing.catch((e) => {
-							console.error(e);
-							crash.play();
-						});
+						crash.play();
 					}
 				}, 100);
 			}
