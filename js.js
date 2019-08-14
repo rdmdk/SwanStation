@@ -25,13 +25,13 @@ function sounds() {
 	const tick = new Audio("tick.mp3");
 	const ai = setInterval(() => {
 		tick.volume = 0.25;
-		if (document.hidden || silenced) //
+		if (document.hidden || silenced) {}
 		else tick.play();
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
 			beep.volume = 0.5;
-			if (document.hidden || silenced) //
+			if (document.hidden || silenced) {}
 			else beep.play();
 		}
 	}, 3e3);
@@ -39,7 +39,7 @@ function sounds() {
 		if (mm < 1) {
 			clearInterval(bi);
 			alarm.volume = 0.5;
-			if (document.hidden || silenced) //
+			if (document.hidden || silenced) {}
 			else alarm.play();
 		}
 	}, 4e3);
@@ -47,7 +47,7 @@ function sounds() {
 		if (mm <= 0 && ss <= 10) {
 			clearInterval(ci);
 			alarm.volume = 0.75;
-			if (document.hidden || silenced) //
+			if (document.hidden || silenced) {}
 			else alarm.play();
 		}
 	}, 1e3);
@@ -56,7 +56,7 @@ function sounds() {
 			clearInterval(ai);
 			clearInterval(di);
 			clearInterval(ei);
-			if (document.hidden || silenced) //
+			if (document.hidden || silenced) {}
 			else crash.play();
 		}
 	}, 100);
