@@ -87,18 +87,6 @@ main:after {
 	width: 0.75em;
 	position: relative;
 }
-.countdown .black,
-.countdown .red{
-	font-weight: normal;
-}
-.countdown .black{
-	background: black;
-	color: red;
-}
-.countdown .red{
-	background: red;
-	color: black;
-}
 .countdown span:before {
 	content: "";
 	background: rgba(127, 127, 127, 0.25);
@@ -116,6 +104,18 @@ main:after {
 .s span {
 	background: #eee;
 	color: #333;
+}
+.m .black,
+.s .red{
+	font-weight: normal;
+}
+.m .black{
+	background: black;
+	color: red;
+}
+.s .red{
+	background: red;
+	color: black;
 }
 .computer {
 	font-size: 2rem;
