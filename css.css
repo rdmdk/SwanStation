@@ -85,6 +85,7 @@ main:after {
 	font-weight: bold;
 	text-align: center;
 	width: 0.75em;
+	overflow: hidden;
 	position: relative;
 }
 .countdown span:before {
