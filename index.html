@@ -286,7 +286,22 @@
 				top: 50%;
 				left: 50%;
 				z-index: 0;
-			}		
+			}	
+			.silence,
+			.silenced {
+				font-size:1rem;
+				padding:1em;
+				position:fixed;
+				cursor:pointer;
+				bottom:0;
+				left:0;
+			}
+			.silence:after{
+				content:"\01F508";
+			}
+			.silenced:after{
+				content:"\01F507";
+			}
 			@media (orientation:landscape) {
 				html {
 					font-size: 1.5vh;
@@ -345,11 +360,13 @@
 			<section class="bg"></section>
 		</main>
 		<button class="go" id="go" title="Click anywhere">Execute</button>
+		<div id="silence" class="silence"></div>
 		<script>
 			let m = document.getElementById("m");
 			let s = document.getElementById("s");
 			let mm = localStorage.minute ? localStorage.minute : 108;
 			let ss = localStorage.second ? localStorage.second : 00;
+			var silenced = false;
 						
 			function minutes() {
 				let a = mm.toString().split("");
@@ -372,27 +389,27 @@
 				const tick = new Audio("tick.mp3");
 				
 				const ai = setInterval(() => {
-					if (document.hidden) tick.muted();
+					if (document.hidden || silenced) tick.muted();
 					else tick.volume = 0.5;
 					tick.play();
 				}, 1e3);
 				const bi = setInterval(() => {
 					if (mm < 4) {
-						if (document.hidden) beep.muted();
+						if (document.hidden || silenced) beep.muted();
 						beep.play();
 					}
 				}, 2500);
 				const ci = setInterval(() => {
 					if (mm < 1) {
 						clearInterval(bi);
-						if (document.hidden) alarm.muted();
+						if (document.hidden || silenced) alarm.muted();
 						alarm.play();
 					}
 				}, 4e3);
 				const di = setInterval(() => {
 					if (mm <= 0 && ss <= 10) {
 						clearInterval(ci);
-						if (document.hidden) alarm.muted();
+						if (document.hidden || silenced) alarm.muted();
 						alarm.play();
 					}
 				}, 1e3);
@@ -470,7 +487,15 @@
 					a.focus();
 				}
 			};
-			let si;
+			function silence() {
+				if (silenced) {
+					document.getElementById("silence").className = "silence";
+					silenced = false;
+				} else {
+					document.getElementById("silence").className = "silenced";
+					silenced = true;
+				}
+			}
 			document.getElementById("go").addEventListener("click", (e) => {
 				sounds();
 				setTimeout(() => {
@@ -483,6 +508,7 @@
 			});
 			document.getElementById("execute").addEventListener("click", () => execute());
 			document.querySelector(".monitor").addEventListener("click", () => document.getElementById("input").focus());
+			document.getElementById("silence").addEventListener("click", () => silence());
 		</script>
 	</body>
 </html>
