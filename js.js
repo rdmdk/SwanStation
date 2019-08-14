@@ -25,26 +25,26 @@ function sounds() {
 	const tick = new Audio("tick.mp3");
 	const ai = setInterval(() => {
 		tick.volume = 0.25;
-		if (document.hidden || silenced) tick.play();
+		if (document.hidden || !silenced) tick.play();
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
 			beep.volume = 0.5;
-			if (document.hidden || silenced) beep.play();
+			if (document.hidden || !silenced) beep.play();
 		}
 	}, 3e3);
 	const ci = setInterval(() => {
 		if (mm < 1) {
 			clearInterval(bi);
 			alarm.volume = 0.5;
-			if (document.hidden || silenced) alarm.play();
+			if (document.hidden || !silenced) alarm.play();
 		}
 	}, 4e3);
 	const di = setInterval(() => {
 		if (mm <= 0 && ss <= 10) {
 			clearInterval(ci);
 			alarm.volume = 0.75;
-			if (document.hidden || silenced) alarm.play();
+			if (document.hidden || !silenced) alarm.play();
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
@@ -52,13 +52,24 @@ function sounds() {
 			clearInterval(ai);
 			clearInterval(di);
 			clearInterval(ei);
-			if (document.hidden || silenced) crash.play();
+			if (document.hidden || !silenced) crash.play();
 		}
 	}, 100);
 }
 
 function theend() {
+	document.querySelector("main").classList.add("danger");
 	document.querySelector("main").style.opacity = 0;
+	setTimeout(() => {
+		setInterval(() => {
+			var r1 = Math.floor(Math.random() - 0.5) * 2;
+			var r2 = Math.floor(Math.random() - 0.5) * 2;
+			var r3 = Math.floor(Math.random() * 3) + 1;
+			document.querySelector(".bg").style.marginTop = r1 + "em";
+			document.querySelector(".bg").style.marginLeft = r2 + "em";
+			document.querySelector(".bg").style.filter = "blur(" + r3 + "em)";
+		}, 150);
+	}, 5e3);
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 2e3);
 	}, 12e3);
@@ -75,19 +86,6 @@ function update() {
 		mm--;
 		ss = 59;
 		minutes();
-	}
-	if (mm <= 0 && ss <= 10) {
-		document.querySelector("main").classList.add("danger");
-		setInterval(() => {
-			if (document.querySelector(".danger")) {
-				var r1 = Math.floor(Math.random() - 0.5) * 2;
-				var r2 = Math.floor(Math.random() - 0.5) * 2;
-				var r3 = Math.floor(Math.random() * 3) + 1;
-				document.querySelector(".bg").style.marginTop = r1 + "em";
-				document.querySelector(".bg").style.marginLeft = r2 + "em";
-				document.querySelector(".bg").style.filter = "blur(" + r3 + "em)";
-			}
-		}, 150);
 	}
 	if (mm <= 0 && ss <= 0) {
 		clearInterval(si);
