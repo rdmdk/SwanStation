@@ -27,12 +27,20 @@ function sounds() {
 		tick.volume = 0.25;
 		if (document.hidden || silenced) {}
 		else tick.play();
+		setTimeout(() => {
+			tick.pause();
+			tick.currentTime = 0;
+		}, 1e3);
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
 			beep.volume = 0.5;
 			if (document.hidden || silenced) {}
 			else beep.play();
+			setTimeout(() => {
+				beep.pause();
+				beep.currentTime = 0;
+			}, 2e3);
 		}
 	}, 2e3);
 	const ci = setInterval(() => {
@@ -41,6 +49,10 @@ function sounds() {
 			alarm.volume = 0.5;
 			if (document.hidden || silenced) {}
 			else alarm.play();
+			setTimeout(() => {
+				alarm.pause();
+				alarm.currentTime = 0;
+			}, 2e3);
 		}
 	}, 2e3);
 	const di = setInterval(() => {
@@ -52,7 +64,7 @@ function sounds() {
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
-			}, 900);
+			}, 1e3);
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
@@ -92,7 +104,7 @@ function theend() {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
 		window.location.reload();
-	}, 30e3);
+	}, 31e3);
 }
 
 function update() {
