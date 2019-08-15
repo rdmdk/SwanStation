@@ -87,7 +87,7 @@ function theend() {
 	setTimeout(() => { m.innerHTML += "<span class='black'>𓍑</span>" }, 5e3);
 	setTimeout(() => { s.innerHTML = "<span class='red'>𓅂</span>" }, 6e3);
 	setTimeout(() => { s.innerHTML += "<span class='red'>𓏱</span>" }, 7e3);
-	setTimeout(() => document.querySelector("main").classList.add("danger"), 8e3);
+	setTimeout(() => document.querySelector("main").classList.add("danger"), 10e3);
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 500);
 	}, 14e3);
@@ -99,7 +99,7 @@ function theend() {
 			document.querySelector(".bg").style.marginTop = r1 + "em";
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
 		}, 150);
-	}, 20e3);
+	}, 19e3);
 	setTimeout(() => {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
