@@ -81,7 +81,7 @@ function sounds() {
 	}, 100);
 }
 function initiation() {
-	if (!localStorage.initiation) {
+	if (!localStorage.initiation || localStorage.retraining) {
 		if (document.querySelector("iframe")) {
 			let a = document.querySelector("iframe");
 			a.parentNode.removeChild(a);
@@ -133,6 +133,7 @@ function theend() {
 	setTimeout(() => {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
+		localStorage.retraining = "mandatory";
 		window.location.reload();
 	}, 31e3);
 }
@@ -194,7 +195,7 @@ document.getElementById("go").addEventListener("click", (e) => {
 		document.getElementById("input").focus();
 		document.body.removeChild(document.getElementById("go"));
 	}, 3e3);
-	setTimeout(() => initiation(), 10e3);
+	setTimeout(() => initiation(), 7e3);
 });
 document.getElementById("execute").addEventListener("click", () => execute());
 document.querySelector(".monitor").addEventListener("click", () => document.getElementById("input").focus());
