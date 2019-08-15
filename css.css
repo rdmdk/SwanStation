@@ -144,7 +144,7 @@ main:after {
 	width: 100%;
 	height: 100%;
 	mix-blend-mode: color-burn;
-	opacity: 0.1;
+	opacity: 0.05;
 	pointer-events: none;
 	position: absolute;
 	top: 0;
