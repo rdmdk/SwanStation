@@ -116,6 +116,7 @@ function update() {
 		theend();
 	}
 	if (mm <= -1) theend();
+	seconds();
 	localStorage.minute = mm;
 	localStorage.second = ss;
 };
