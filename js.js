@@ -126,14 +126,13 @@ function update() {
 
 function execute() {
 	let a = document.getElementById("input");
-	if (a.value === "4 8 15 16 23 42") {
+	if (document.querySelector("main").classList.contains("danger")) return false;
+	else if (a.value === "4 8 15 16 23 42") {
 		if (mm < 4) {
 			mm = 108;
 			ss = 02;
 			a.value = "";
 			a.focus();
-			if (document.querySelector(".danger")) document.querySelector(".danger").classList.remove("danger");
-			document.querySelector(".bg").removeAttribute("style");
 		} else {
 			a.value = "Not yet";
 			setTimeout(() => {
@@ -170,10 +169,13 @@ document.getElementById("execute").addEventListener("click", () => execute());
 document.querySelector(".monitor").addEventListener("click", () => document.getElementById("input").focus());
 document.getElementById("silence").addEventListener("click", () => silence());
 document.querySelector("i").addEventListener("click", () => {
-	localStorage.clear();
-	mm = 1;
-	ss = 30;
-	setTimeout(() => window.location.reload(), 1e3);
+	if (document.querySelector("main").classList.contains("danger")) return false;
+	else {
+		localStorage.clear();
+		mm = 1;
+		ss = 30;
+		setTimeout(() => window.location.reload(), 1e3);
+	}
 });
 setInterval(() => {
 	if (!document.querySelector(".input:focus") && !document.querySelector("main").classList.contains("danger")) document.querySelector(".input").focus();
