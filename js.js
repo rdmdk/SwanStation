@@ -23,13 +23,14 @@ function sounds() {
 	const beep = new Audio("beep.mp3");
 	const crash = new Audio("crash.mp3");
 	const tick = new Audio("tick.mp3");
-	alarm.volume = document.hidden || silenced ? 0 : 0.5;
-	beep.volume = document.hidden || silenced ? 0 : 0.5;
-	crash.volume = document.hidden || silenced ? 0 : 1;
-	tick.volume = document.hidden || silenced ? 0 : 0.25;
+	alarm.volume = 0.5;
+	beep.volume = 0.5;
+	crash.volume = 1;
+	tick.volume = 0.25;
 
 	const ai = setInterval(() => {
-		tick.play();
+		if (document.hidden || silenced) {}
+		else tick.play();
 		setTimeout(() => {
 			tick.pause();
 			tick.currentTime = 0;
@@ -37,7 +38,8 @@ function sounds() {
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
-			beep.play();
+			if (document.hidden || silenced) {}
+			else beep.play();
 			setTimeout(() => {
 				beep.pause();
 				beep.currentTime = 0;
@@ -47,7 +49,8 @@ function sounds() {
 	const ci = setInterval(() => {
 		if (mm < 1) {
 			clearInterval(bi);
-			alarm.play();
+			if (document.hidden || silenced) {}
+			else alarm.play();
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
@@ -57,11 +60,12 @@ function sounds() {
 	const di = setInterval(() => {
 		if (mm <= 0 && ss <= 10) {
 			clearInterval(ci);
-			alarm.play();
+			if (document.hidden || silenced) {}
+			else alarm.play();
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
-			}, 975);
+			}, 999);
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
