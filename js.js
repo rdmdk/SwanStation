@@ -209,7 +209,7 @@ document.querySelector("i").addEventListener("click", (e) => {
 		localStorage.initiation = "initiated";
 		setTimeout(() => window.location.reload(), 1e3);
 	} else {
-		localStorage.removeItem("initation");
+		localStorage.removeItem("initiation");
 		initiation();
 	}
 });
