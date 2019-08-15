@@ -82,6 +82,10 @@ function sounds() {
 }
 function initiation() {
 	if (!localStorage.initiation) {
+		if (document.querySelector("iframe")) {
+			let a = document.querySelector("iframe");
+			a.parentNode.removeChild(a);
+		}
 		document.querySelector(".screen").insertAdjacentHTML("afterbegin", "<div id='x'></div>");
 		new YT.Player("x", {
 			videoId: "UNFDHgjrlK8",
@@ -100,7 +104,7 @@ function initiation() {
 	}
 	function onPlayerStateChange(event) {
 		if (event.data === 0) {
-			let a = video.querySelector(".screen iframe");
+			let a = document.querySelector("iframe");
 			a.parentNode.removeChild(a);
 			localStorage.initiation = "initiated";
 		}
