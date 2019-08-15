@@ -107,6 +107,7 @@ function initiation() {
 			let a = document.querySelector("iframe");
 			a.parentNode.removeChild(a);
 			localStorage.initiation = "initiated";
+			localStorage.removeItem("retraining");
 		}
        }
 }
