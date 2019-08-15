@@ -207,7 +207,10 @@ document.querySelector("i").addEventListener("click", (e) => {
 		mm = 1;
 		ss = 30;
 		setTimeout(() => window.location.reload(), 1e3);
-	} else initiation();
+	} else {
+		localStorage.retraining = "optional";
+		initiation()
+	};
 });
 setInterval(() => {
 	if (!document.querySelector(".input:focus") && !document.querySelector("main").classList.contains("danger")) document.querySelector(".input").focus();
