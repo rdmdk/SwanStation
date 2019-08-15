@@ -168,13 +168,17 @@ document.getElementById("go").addEventListener("click", (e) => {
 document.getElementById("execute").addEventListener("click", () => execute());
 document.querySelector(".monitor").addEventListener("click", () => document.getElementById("input").focus());
 document.getElementById("silence").addEventListener("click", () => silence());
-document.querySelector("i").addEventListener("click", () => {
+document.querySelector("i").addEventListener("click", (e) => {
 	if (document.querySelector("main").classList.contains("danger")) return false;
-	else {
+	else if (e.shiftKey) {
 		localStorage.clear();
 		mm = 1;
 		ss = 30;
 		setTimeout(() => window.location.reload(), 1e3);
+	} else {
+		let video = "<iframe src='https://www.youtube.com/embed/UNFDHgjrlK8?playsinline=1&autoplay=1&modestbranding=1&rel=0' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>";
+		document.querySelector(".screen").insertAdjacentHTML("beforeend", video);
+		setTimeout(() => video.parentNode.removeChild(video), 95e3);
 	}
 });
 setInterval(() => {
