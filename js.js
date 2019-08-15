@@ -161,7 +161,7 @@ function execute() {
 	else if (a.value === "4 8 15 16 23 42") {
 		if (mm < 4) {
 			mm = 108;
-			ss = 02;
+			ss = 00;
 			a.value = "";
 			a.focus();
 		} else {
