@@ -19,7 +19,6 @@ function seconds() {
 }
 
 function sounds() {
-	let level = "green";
 	const alarm = new Audio("alarm.mp3");
 	const beep = new Audio("beep.mp3");
 	const crash = new Audio("crash.mp3");
@@ -28,9 +27,7 @@ function sounds() {
 	beep.volume = document.hidden || silenced ? 0 : 0.5;
 	crash.volume = document.hidden || silenced ? 0 : 1;
 	tick.volume = document.hidden || silenced ? 0 : 0.25;
-	
-	setInterval(() => { level = mm <= 0 && ss <= 10 ? "red" : mm < 1 ? "orange" : mm < 4 ? "yellow" : "green" }, 250);
-	
+
 	const ai = setInterval(() => {
 		tick.play();
 		setTimeout(() => {
