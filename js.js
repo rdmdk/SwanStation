@@ -80,6 +80,31 @@ function sounds() {
 		}
 	}, 100);
 }
+function initiation() {
+	if (!localStorage.initiation) {
+		video.querySelector(".screen").insertAdjacentHTML("afterbegin", "<div id='x'></div>");
+		new YT.Player("x", {
+			videoId: "UNFDHgjrlK8",
+			playerVars: {
+				autoplay: 1,
+				modestbranding: 1,
+				rel: 0,
+				playsinline: 1,
+				iv_load_policy: 3,
+				origin: "https://www.youtube.com"
+			},
+			events: {
+				"onStateChange": onPlayerStateChange
+			}
+		});
+	}
+	function onPlayerStateChange(event) {
+		if (event.data === 0) {
+			let a = video.querySelector(".screen iframe");
+			a.parentNode.removeChild(a), 1e3);
+		}
+       }
+}
 
 function theend() {
 	setTimeout(() => { m.innerHTML = "<span class='black'>𓋿</span>" }, 3e3);
@@ -175,11 +200,7 @@ document.querySelector("i").addEventListener("click", (e) => {
 		mm = 1;
 		ss = 30;
 		setTimeout(() => window.location.reload(), 1e3);
-	} else {
-		let video = "<iframe src='https://www.youtube.com/embed/UNFDHgjrlK8?playsinline=1&autoplay=1&modestbranding=1&rel=0' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>";
-		document.querySelector(".screen").insertAdjacentHTML("beforeend", video);
-		setTimeout(() => video.parentNode.removeChild(video), 95e3);
-	}
+	} else initiation();
 });
 setInterval(() => {
 	if (!document.querySelector(".input:focus") && !document.querySelector("main").classList.contains("danger")) document.querySelector(".input").focus();
