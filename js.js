@@ -206,6 +206,7 @@ document.querySelector("i").addEventListener("click", (e) => {
 		localStorage.clear();
 		mm = 1;
 		ss = 30;
+		localStorage.initiation = "initiated";
 		setTimeout(() => window.location.reload(), 1e3);
 	} else {
 		localStorage.removeItem("initation");
