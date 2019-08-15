@@ -19,52 +19,52 @@ function seconds() {
 }
 
 function sounds() {
+	let level = "green";
 	const alarm = new Audio("alarm.mp3");
 	const beep = new Audio("beep.mp3");
 	const crash = new Audio("crash.mp3");
 	const tick = new Audio("tick.mp3");
+	alarm.volume = document.hidden || silenced ? 0 : 0.5;
+	beep.volume = document.hidden || silenced ? 0 : 0.5;
+	crash.volume = document.hidden || silenced ? 0 : 1;
+	tick.volume = document.hidden || silenced ? 0 : 0.25;
+	
+	setInterval(() => { level = mm <= 0 && ss <= 10 ? "red" : mm < 1 ? "orange" : mm < 4 ? "yellow" : "green" }, 250);
+	
 	const ai = setInterval(() => {
-		tick.volume = 0.25;
-		if (document.hidden || silenced) {}
-		else tick.play();
+		tick.play();
 		setTimeout(() => {
 			tick.pause();
 			tick.currentTime = 0;
-		}, 900);
+		}, 975);
 	}, 1e3);
 	const bi = setInterval(() => {
 		if (mm < 4) {
-			beep.volume = 0.5;
-			if (document.hidden || silenced) {}
-			else beep.play();
+			beep.play();
 			setTimeout(() => {
 				beep.pause();
 				beep.currentTime = 0;
-			}, 1900);
+			}, 1975);
 		}
 	}, 2e3);
 	const ci = setInterval(() => {
 		if (mm < 1) {
 			clearInterval(bi);
-			alarm.volume = 0.5;
-			if (document.hidden || silenced) {}
-			else alarm.play();
+			alarm.play();
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
-			}, 1900);
+			}, 1975);
 		}
 	}, 2e3);
 	const di = setInterval(() => {
 		if (mm <= 0 && ss <= 10) {
 			clearInterval(ci);
-			alarm.volume = 0.75;
-			if (document.hidden || silenced) {}
-			else alarm.play();
+			alarm.play();
 			setTimeout(() => {
 				alarm.pause();
 				alarm.currentTime = 0;
-			}, 900);
+			}, 975);
 		}
 	}, 1e3);
 	const ei = setInterval(() => {
@@ -119,7 +119,6 @@ function update() {
 		theend();
 	}
 	if (mm <= -1) theend();
-	seconds();
 	localStorage.minute = mm;
 	localStorage.second = ss;
 };
