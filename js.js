@@ -82,7 +82,7 @@ function sounds() {
 }
 function initiation() {
 	if (!localStorage.initiation) {
-		video.querySelector(".screen").insertAdjacentHTML("afterbegin", "<div id='x'></div>");
+		document.querySelector(".screen").insertAdjacentHTML("afterbegin", "<div id='x'></div>");
 		new YT.Player("x", {
 			videoId: "UNFDHgjrlK8",
 			playerVars: {
