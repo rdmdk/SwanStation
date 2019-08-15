@@ -208,7 +208,7 @@ document.querySelector("i").addEventListener("click", (e) => {
 		ss = 30;
 		setTimeout(() => window.location.reload(), 1e3);
 	} else {
-		localStorage.retraining = "optional";
+		localStorage.retraining = "voluntary";
 		initiation();
 	}
 });
