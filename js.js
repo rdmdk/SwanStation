@@ -94,12 +94,12 @@ function theend() {
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
-			var r1 = Math.floor(Math.random() - 0.5) * 5;
+			var r1 = Math.floor(Math.random() - 0.5) * 3;
 			var r2 = Math.floor(Math.random() - 0.5) * 5;
 			document.querySelector(".bg").style.marginTop = r1 + "em";
 			document.querySelector(".bg").style.marginLeft = r2 + "em";
 		}, 150);
-	}, 18e3);
+	}, 20e3);
 	setTimeout(() => {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
