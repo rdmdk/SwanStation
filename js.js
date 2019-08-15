@@ -101,7 +101,7 @@ function initiation() {
 	function onPlayerStateChange(event) {
 		if (event.data === 0) {
 			let a = video.querySelector(".screen iframe");
-			a.parentNode.removeChild(a), 1e3);
+			a.parentNode.removeChild(a);
 			localStorage.initiation = "initiated";
 		}
        }
