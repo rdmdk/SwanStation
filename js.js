@@ -209,8 +209,8 @@ document.querySelector("i").addEventListener("click", (e) => {
 		setTimeout(() => window.location.reload(), 1e3);
 	} else {
 		localStorage.retraining = "optional";
-		initiation()
-	};
+		initiation();
+	}
 });
 setInterval(() => {
 	if (!document.querySelector(".input:focus") && !document.querySelector("main").classList.contains("danger")) document.querySelector(".input").focus();
