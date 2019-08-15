@@ -233,6 +233,7 @@ main:after {
 	position: absolute;
 	top: 0;
 	left: 0;
+	z-index:1000;
 }
 .desktop .screen iframe{pointer-events:none}
 .keyboard {
