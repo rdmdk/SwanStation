@@ -102,6 +102,7 @@ function initiation() {
 		if (event.data === 0) {
 			let a = video.querySelector(".screen iframe");
 			a.parentNode.removeChild(a), 1e3);
+			localStorage.initiation = "initiated";
 		}
        }
 }
@@ -189,6 +190,7 @@ document.getElementById("go").addEventListener("click", (e) => {
 		document.getElementById("input").focus();
 		document.body.removeChild(document.getElementById("go"));
 	}, 3e3);
+	setTimeout(() => initiation(), 10e3);
 });
 document.getElementById("execute").addEventListener("click", () => execute());
 document.querySelector(".monitor").addEventListener("click", () => document.getElementById("input").focus());
