@@ -208,7 +208,7 @@ main:after {
 	z-index: 10;
 }
 .screen:before,
-.button:before{
+.go:before{
 	content:"";
 	background:repeating-linear-gradient(#0000002a, #0000002a 1px, transparent 1px, transparent 2px);
 	width:100%;
