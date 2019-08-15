@@ -81,7 +81,7 @@ function sounds() {
 	}, 100);
 }
 function initiation() {
-	if (!localStorage.initiation || localStorage.retraining) {
+	if (!localStorage.initiation) {
 		if (document.querySelector("iframe")) {
 			let a = document.querySelector("iframe");
 			a.parentNode.removeChild(a);
@@ -107,7 +107,6 @@ function initiation() {
 			let a = document.querySelector("iframe");
 			a.parentNode.removeChild(a);
 			localStorage.initiation = "initiated";
-			localStorage.removeItem("retraining");
 		}
        }
 }
@@ -134,7 +133,7 @@ function theend() {
 	setTimeout(() => {
 		localStorage.removeItem("minute");
 		localStorage.removeItem("second");
-		localStorage.retraining = "mandatory";
+		localStorage.removeItem("initiation");
 		window.location.reload();
 	}, 31e3);
 }
@@ -209,7 +208,7 @@ document.querySelector("i").addEventListener("click", (e) => {
 		ss = 30;
 		setTimeout(() => window.location.reload(), 1e3);
 	} else {
-		localStorage.retraining = "voluntary";
+		localStorage.removeItem("initation");
 		initiation();
 	}
 });
