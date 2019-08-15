@@ -16,7 +16,7 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 75;
 }
 main {
 	width: 100vw;
@@ -233,7 +233,7 @@ main:after {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index:1000;
+	z-index:100;
 }
 .desktop .screen iframe{pointer-events:none}
 .keyboard {
