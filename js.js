@@ -77,6 +77,11 @@ function sounds() {
 			if (document.hidden || silenced) {}
 			else {
 				if (mm < 4) {
+					beep.play();
+					setTimeout(() => {
+						beep.pause();
+						beep.currentTime = 0;
+					}, 1975);
 					clearInterval(ii);
 					ii = setInterval(() => {
 						beep.play();
@@ -85,6 +90,11 @@ function sounds() {
 							beep.currentTime = 0;
 						}, 1975);
 						if (mm < 1) {
+							alarm.play();
+							setTimeout(() => {
+								alarm.pause();
+								alarm.currentTime = 0;
+							}, 1975);
 							clearInterval(ii);
 							ii = setInterval(() => {
 								alarm.play();
@@ -93,6 +103,11 @@ function sounds() {
 									alarm.currentTime = 0;
 								}, 1975);
 								if (mm <= 0 && ss <= 10) {
+									alarm.play();
+									setTimeout(() => {
+										alarm.pause();
+										alarm.currentTime = 0;
+									}, 1975);
 									clearInterval(ii);
 									ii = setInterval(() => {
 										alarm.play();
@@ -101,6 +116,11 @@ function sounds() {
 											alarm.currentTime = 0;
 										}, 1975);
 										if (mm <= 0 && ss <= 10) {
+											alarm.play();
+											setTimeout(() => {
+												alarm.pause();
+												alarm.currentTime = 0;
+											}, 990);
 											clearInterval(ii);
 											ii = setInterval(() => {
 												alarm.play();
