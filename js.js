@@ -68,7 +68,7 @@ function sounds() {
 					tick.pause();
 					tick.currentTime = 0;
 				}, 975);
-				if (mm <= 0 && ss <= 0) clearInterval(i))					
+				if (mm <= 0 && ss <= 0) clearInterval(i);					
 			}
 		}, 1e3);
 		
@@ -109,7 +109,7 @@ function sounds() {
 													alarm.currentTime = 0;
 												}, 990);
 												if (mm <= 0 && ss <= 0) {
-													clearInterval();
+													clearInterval(ii);
 													setTimeout(() => crash.play(), 2e3);
 												}
 											}, 1e3);
