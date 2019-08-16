@@ -27,58 +27,155 @@ function sounds() {
 	beep.volume = 0.5;
 	crash.volume = 1;
 	tick.volume = 0.25;
-
-	const ai = setInterval(() => {
-		if (document.hidden || silenced) {}
-		else tick.play();
-		setTimeout(() => {
-			tick.pause();
-			tick.currentTime = 0;
-		}, 975);
-	}, 1e3);
-	const bi = setInterval(() => {
-		if (mm < 4) {
+	
+	if (window.location.hash === "#debug") {
+	
+		let i = setInterval(() => {
 			if (document.hidden || silenced) {}
-			else beep.play();
-			setTimeout(() => {
-				beep.pause();
-				beep.currentTime = 0;
-			}, 1975);
-		}
-	}, 2e3);
-	const ci = setInterval(() => {
-		if (mm < 1) {
-			clearInterval(bi);
+			else {
+				tick.play();
+				setTimeout(() => {
+					tick.pause();
+					tick.currentTime = 0;
+				}, 975);
+				if (mm <= 0 && ss <= 0) {
+					clearInterval(i);
+					setTimeout(() => else crash.play(), 2e3);
+				} else if (mm < 1) {
+					alarm.play();
+					setTimeout(() => {
+						alarm.pause();
+						alarm.currentTime = 0;
+					}, 975);
+				} else if (mm < 4) {
+					beep.play();
+					setTimeout(() => {
+						beep.pause();
+						beep.currentTime = 0;
+					}, 975);
+				}
+			}
+		}, 1e3);
+	
+	} else if (window.location.hash === "#debug2") {
+		
+		// Tick
+		let i = setInterval(() => {
 			if (document.hidden || silenced) {}
-			else alarm.play();
-			setTimeout(() => {
-				alarm.pause();
-				alarm.currentTime = 0;
-			}, 1975);
-		}
-	}, 2e3);
-	const di = setInterval(() => {
-		if (mm <= 0 && ss <= 10) {
-			clearInterval(ci);
+			else {
+				tick.play();
+				setTimeout(() => {
+					tick.pause();
+					tick.currentTime = 0;
+				}, 975);
+				if (mm <= 0 && ss <= 0) clearInterval(i))					
+			}
+		}, 1e3);
+		
+		// Alarms
+		let ii = setInterval(() => {
 			if (document.hidden || silenced) {}
-			else alarm.play();
+			else {
+				if (mm < 4) {
+					clearInterval(ii);
+					ii = setInterval(() => {
+						beep.play();
+						setTimeout(() => {
+							beep.pause();
+							beep.currentTime = 0;
+						}, 1975);
+						if (mm < 1) {
+							clearInterval(ii);
+							ii = setInterval(() => {
+								alarm.play();
+								setTimeout(() => {
+									alarm.pause();
+									alarm.currentTime = 0;
+								}, 1975);
+								if (mm <= 0 && ss <= 10) {
+									clearInterval(ii);
+									ii = setInterval(() => {
+										alarm.play();
+										setTimeout(() => {
+											alarm.pause();
+											alarm.currentTime = 0;
+										}, 1975);
+										if (mm <= 0 && ss <= 10) {
+											clearInterval(ii);
+											ii = setInterval(() => {
+												alarm.play();
+												setTimeout(() => {
+													alarm.pause();
+													alarm.currentTime = 0;
+												}, 990);
+												if (mm <= 0 && ss <= 0) {
+													clearInterval();
+													setTimeout(() => else crash.play(), 2e3);
+												}
+											}, 1e3);
+										}
+									}, 2e3);
+								}
+							}, 2e3);
+						}
+					}, 2e3);
+				}
+			}
+		}, 1e3 );
+		
+	} else {
+		const ai = setInterval(() => {
+			if (document.hidden || silenced) {}
+			else tick.play();
 			setTimeout(() => {
-				alarm.pause();
-				alarm.currentTime = 0;
-			}, 990);
-		}
-	}, 1e3);
-	const ei = setInterval(() => {
-		if (mm <= 0 && ss <= 0) {
-			clearInterval(ai);
-			clearInterval(di);
-			clearInterval(ei);
-			setTimeout(() => {
+				tick.pause();
+				tick.currentTime = 0;
+			}, 975);
+		}, 1e3);
+		const bi = setInterval(() => {
+			if (mm < 4) {
 				if (document.hidden || silenced) {}
-				else crash.play();
-			}, 2e3);
-		}
-	}, 100);
+				else beep.play();
+				setTimeout(() => {
+					beep.pause();
+					beep.currentTime = 0;
+				}, 1975);
+			}
+		}, 2e3);
+		const ci = setInterval(() => {
+			if (mm < 1) {
+				clearInterval(bi);
+				if (document.hidden || silenced) {}
+				else alarm.play();
+				setTimeout(() => {
+					alarm.pause();
+					alarm.currentTime = 0;
+				}, 1975);
+			}
+		}, 2e3);
+		const di = setInterval(() => {
+			if (mm <= 0 && ss <= 10) {
+				clearInterval(ci);
+				if (document.hidden || silenced) {}
+				else alarm.play();
+				setTimeout(() => {
+					alarm.pause();
+					alarm.currentTime = 0;
+				}, 990);
+			}
+		}, 1e3);
+		const ei = setInterval(() => {
+			if (mm <= 0 && ss <= 0) {
+				clearInterval(ai);
+				clearInterval(di);
+				clearInterval(ei);
+				setTimeout(() => {
+					if (document.hidden || silenced) {}
+					else crash.play();
+				}, 2e3);
+			}
+		}, 100);
+	}
 }
 function initiation() {
 	if (!localStorage.initiation) {
