@@ -40,7 +40,7 @@ function sounds() {
 				}, 975);
 				if (mm <= 0 && ss <= 0) {
 					clearInterval(i);
-					setTimeout(() => else crash.play(), 2e3);
+					setTimeout(() => crash.play(), 2e3);
 				} else if (mm < 1) {
 					alarm.play();
 					setTimeout(() => {
@@ -110,7 +110,7 @@ function sounds() {
 												}, 990);
 												if (mm <= 0 && ss <= 0) {
 													clearInterval();
-													setTimeout(() => else crash.play(), 2e3);
+													setTimeout(() => crash.play(), 2e3);
 												}
 											}, 1e3);
 										}
