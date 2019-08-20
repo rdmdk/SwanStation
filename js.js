@@ -237,7 +237,7 @@ function theend() {
 	setTimeout(() => document.querySelector("main").classList.add("danger"), 10e3);
 	setTimeout(() => {
 		setInterval(() => document.getElementById("input").value += "System Failure ", 500);
-	}, 14e3);
+	}, 14500);
 	setTimeout(() => {
 		document.querySelector("main").style.opacity = 0;
 		setInterval(() => {
