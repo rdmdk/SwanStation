@@ -1,4 +1,4 @@
-const main = document.queryselector('main');
+const main = document.querySelector('main');
 const m = document.getElementById("m");
 const s = document.getElementById("s");
 
