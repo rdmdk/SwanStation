@@ -1,6 +1,7 @@
 const main = document.queryselector('main');
 const m = document.getElementById("m");
 const s = document.getElementById("s");
+
 let mm = localStorage.minute ? Number(localStorage.minute) : 108;
 let ss = localStorage.second ? Number(localStorage.second) : 00;
 let silenced = false;
@@ -8,6 +9,7 @@ let silenced = false;
 function minutes() {
 	let a = mm.toString().split('');
 	let b = mm < 100 && mm >= 10 ? '<span>0</span>' : mm < 10 && mm >= 0 ? '<span>0</span><span>0</span>' : '';
+	
 	m.innerHTML = b;
 	a.forEach(c => m.insertAdjacentHTML('beforeend', '<span>' + c + '</span>'));
 }
@@ -15,6 +17,7 @@ function minutes() {
 function seconds() {
 	let a = ss.toString().split('');
 	let b = ss < 10 ? '<span>0</span>' : '';
+	
 	s.innerHTML = b;
 	a.forEach(c => s.insertAdjacentHTML('beforeend', '<span>' + c + '</span>'));
 }
@@ -24,6 +27,7 @@ function sounds() {
 	const beep = new Audio('beep.mp3');
 	const crash = new Audio('crash.mp3');
 	const tick = new Audio('tick.mp3');
+	
 	alarm.volume = 0.5;
 	beep.volume = 0.5;
 	crash.volume = 1;
@@ -200,10 +204,9 @@ function sounds() {
 }
 function initiation() {
 	if (!localStorage.initiation) {
-		if (document.querySelector('iframe')) {
-			let a = document.querySelector('iframe');
-			a.parentNode.removeChild(a);
-		}
+		const f = document.querySelector('iframe');
+		if (f) f.remove();
+		
 		document.querySelector('.screen').insertAdjacentHTML('afterbegin', '<div id="x"></div>');
 		new YT.Player('x', {
 			videoId: 'UNFDHgjrlK8',
@@ -220,10 +223,10 @@ function initiation() {
 			}
 		});
 	}
+	
 	function onPlayerStateChange(event) {
 		if (event.data === 0) {
-			let a = document.querySelector('iframe');
-			a.parentNode.removeChild(a);
+			document.querySelector('iframe').remove();
 			localStorage.initiation = 'initiated';
 		}
        }
@@ -298,12 +301,12 @@ function execute() {
 };
 
 function silence() {
-	const s = document.getElementById('silence');
 	silenced = !silenced;
-	s.className = silenced ? 'silenced' : 'silence';
+	document.getElementById('silence').className = silenced ? 'silenced' : 'silence';
 }
 
 const go = document.getElementById('go');
+
 go.addEventListener('click', e => {
 	sounds();
 	setTimeout(() => {
@@ -315,6 +318,7 @@ go.addEventListener('click', e => {
 	}, 3e3);
 	setTimeout(() => initiation(), 7e3);
 });
+
 document.getElementById('execute').addEventListener('click', () => execute());
 document.querySelector('.monitor').addEventListener('click', () => document.getElementById('input').focus());
 document.getElementById('silence').addEventListener('click', () => silence());
@@ -331,6 +335,7 @@ document.querySelector('i').addEventListener('click', e => {
 		initiation();
 	}
 });
+
 setInterval(() => {
 	if (!document.querySelector('.input:focus') && !main.classList.contains('danger')) document.querySelector('.input').focus();
 }, 100);
