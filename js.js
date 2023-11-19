@@ -264,7 +264,7 @@ function theend() {
 function update() {
 	ss -= 1;
 	if (ss < 0) {
-		m -= 1;
+		mm -= 1;
 		ss = 59;
 		minutes();
 	}
